@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brosur Design - 4 Layout</title>
+    <style>
+        /* Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Container Brosur */
+        .brochure {
+            width: 280px;
+            height: 500px;
+            background: #fff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .brochure:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Warna Tema */
+        :root {
+            --orange: #f58220;
+            --light-blue: #b8d8d8;
+            --dark-blue: #1a3c4a;
+            --text-gray: #555;
+            --white: #ffffff;
+            --light-gray: #e8e8e8;
+        }
+
+        /* Tipografi */
+        h1, h2, h3 {
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 28px;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 22px;
+        }
+
+        p {
+            font-size: 10px;
+            line-height: 1.5;
+            color: var(--text-gray);
+        }
+
+        .text-orange { color: var(--orange); }
+        .text-dark { color: var(--dark-blue); }
+        .text-white { color: var(--white); }
+
+        /* ===== LAYOUT 1 (Kiri) ===== */
+        .layout-1 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .layout-1 .top-section {
+            background: var(--orange);
+            height: 45%;
+            padding: 20px;
+            position: relative;
+        }
+
+        .layout-1 .top-section .image-placeholder {
+            width: 70px;
+            height: 70px;
+            background: var(--light-gray);
+            margin-bottom: 15px;
+            border: 2px solid #fff;
+        }
+
+        .layout-1 .top-section .text-content {
+            color: #fff;
+        }
+
+        .layout-1 .top-section .text-content h2 {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .layout-1 .top-section .text-content h1 {
+            font-size: 28px;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .layout-1 .bottom-section {
+            background: var(--light-blue);
+            height: 55%;
+            padding: 20px;
+            position: relative;
+        }
+
+        .layout-1 .bottom-section .image-placeholder-large {
+            width: 100%;
+            height: 120px;
+            background: var(--light-gray);
+            border: 3px solid var(--orange);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .layout-1 .bottom-section .image-placeholder-large::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 30px;
+            height: 30px;
+            border-bottom: 3px solid var(--orange);
+            border-right: 3px solid var(--orange);
+        }
+
+        .layout-1 .bottom-section .text-content {
+            padding: 0 5px;
+        }
+
+        .layout-1 .bottom-section .text-content p {
+            font-size: 9px;
+            color: var(--dark-blue);
+        }
+
+        .layout-1 .footer-info {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 8px;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        /* ===== LAYOUT 2 (Tengah Kiri) ===== */
+        .layout-2 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .layout-2 .header {
+            background: var(--orange);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .layout-2 .header h3 {
+            font-size: 10px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .layout-2 .header .contact {
+            font-size: 8px;
+            color: #fff;
+        }
+
+        .layout-2 .main-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .layout-2 .main-content h1 {
+            color: var(--dark-blue);
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+
+        .layout-2 .main-content h1 span {
+            color: var(--orange);
+        }
+
+        .layout-2 .main-content .divider {
+            width: 40px;
+            height: 3px;
+            background: var(--orange);
+            margin-bottom: 20px;
+        }
+
+        .layout-2 .content-body {
+            display: flex;
+            gap: 15px;
+            flex: 1;
+        }
+
+        .layout-2 .content-body .left-col {
+            width: 45%;
+        }
+
+        .layout-2 .content-body .left-col .image-placeholder {
+            width: 100%;
+            height: 140px;
+            background: var(--light-gray);
+            border: 2px solid var(--light-blue);
+        }
+
+        .layout-2 .content-body .right-col {
+            width: 55%;
+        }
+
+        .layout-2 .content-body .right-col h4 {
+            font-size: 12px;
+            color: var(--orange);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .layout-2 .content-body .right-col p {
+            font-size: 9px;
+            margin-bottom: 10px;
+            color: var(--text-gray);
+        }
+
+        .layout-2 .footer-text {
+            margin-top: 15px;
+            font-size: 7px;
+            color: var(--text-gray);
+            border-top: 1px solid var(--light-blue);
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        /* ===== LAYOUT 3 (Tengah Kanan) ===== */
+        .layout-3 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .layout-3 .top-section {
+            background: var(--orange);
+            padding: 20px;
+            height: 35%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .layout-3 .top-section p {
+            color: #fff;
+            font-size: 9px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .layout-3 .middle-section {
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            flex: 1;
+        }
+
+        .layout-3 .middle-section .left-col {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .layout-3 .middle-section .left-col .image-placeholder {
+            width: 100%;
+            height: 100px;
+            background: var(--light-gray);
+            border: 3px solid var(--orange);
+            position: relative;
+        }
+
+        .layout-3 .middle-section .left-col .image-placeholder::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 25px;
+            height: 25px;
+            border-top: 3px solid var(--orange);
+            border-right: 3px solid var(--orange);
+        }
+
+        .layout-3 .middle-section .right-col {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .layout-3 .middle-section .right-col .image-placeholder-small {
+            width: 100%;
+            height: 60px;
+            background: var(--light-gray);
+            border: 2px solid var(--light-blue);
+            margin-bottom: 10px;
+        }
+
+        .layout-3 .middle-section .right-col h3 {
+            font-size: 14px;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+
+        .layout-3 .middle-section .right-col p {
+            font-size: 8px;
+            color: var(--text-gray);
+        }
+
+        .layout-3 .bottom-section {
+            background: var(--light-blue);
+            padding: 20px;
+            height: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .layout-3 .bottom-section h1 {
+            color: var(--dark-blue);
+            font-size: 24px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .layout-3 .bottom-section h1 span {
+            color: var(--orange);
+        }
+
+        /* ===== LAYOUT 4 (Kanan) ===== */
+        .layout-4 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .layout-4 .header {
+            background: var(--orange);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .layout-4 .header h3 {
+            font-size: 10px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .layout-4 .header .contact {
+            font-size: 8px;
+            color: #fff;
+        }
+
+        .layout-4 .main-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .layout-4 .main-content h1 {
+            color: var(--dark-blue);
+            font-size: 26px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .layout-4 .main-content .divider {
+            width: 100%;
+            height: 2px;
+            background: var(--orange);
+            margin-bottom: 20px;
+        }
+
+        .layout-4 .content-body {
+            display: flex;
+            gap: 15px;
+            flex: 1;
+        }
+
+        .layout-4 .content-body .left-col {
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .layout-4 .content-body .left-col .image-placeholder {
+            width: 100%;
+            height: 140px;
+            background: var(--light-gray);
+            border: 3px solid var(--orange);
+            position: relative;
+        }
+
+        .layout-4 .content-body .left-col .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 25px;
+            height: 25px;
+            border-top: 3px solid var(--orange);
+            border-left: 3px solid var(--orange);
+        }
+
+        .layout-4 .content-body .left-col .image-placeholder::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 25px;
+            height: 25px;
+            border-bottom: 3px solid var(--orange);
+            border-right: 3px solid var(--orange);
+        }
+
+        .layout-4 .content-body .right-col {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .layout-4 .content-body .right-col h4 {
+            font-size: 11px;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .layout-4 .content-body .right-col p {
+            font-size: 8px;
+            margin-bottom: 10px;
+            color: var(--text-gray);
+        }
+
+        .layout-4 .footer-text {
+            margin-top: 15px;
+            font-size: 7px;
+            color: var(--text-gray);
+            border-top: 1px solid var(--light-blue);
+            padding-top: 10px;
+            text-align: center;
+        }
+
+        /* JS Interaction */
+        .brochure {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Layout 1 -->
+    <div class="brochure layout-1" onclick="showAlert('Layout 1')">
+        <div class="top-section">
+            <div class="image-placeholder"></div>
+            <div class="text-content">
+                <h2>Design</h2>
+                <h1>BROCHURE</h1>
+            </div>
+        </div>
+        <div class="bottom-section">
+            <div class="image-placeholder-large"></div>
+            <div class="text-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="footer-info">
+                <span>COMPANY NAME</span>
+                <span>+62 812 3456 7890</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 2 -->
+    <div class="brochure layout-2" onclick="showAlert('Layout 2')">
+        <div class="header">
+            <h3>COMPANY NAME</h3>
+            <div class="contact">+62 812 3456 7890</div>
+        </div>
+        <div class="main-content">
+            <h1>DESIGN <br><span>BROCHURE</span></h1>
+            <div class="divider"></div>
+            <div class="content-body">
+                <div class="left-col">
+                    <div class="image-placeholder"></div>
+                </div>
+                <div class="right-col">
+                    <h4>Lorem Ipsum</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                </div>
+            </div>
+            <div class="footer-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout 3 -->
+    <div class="brochure layout-3" onclick="showAlert('Layout 3')">
+        <div class="top-section">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+        </div>
+        <div class="middle-section">
+            <div class="left-col">
+                <div class="image-placeholder"></div>
+            </div>
+            <div class="right-col">
+                <div class="image-placeholder-small"></div>
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+            </div>
+        </div>
+        <div class="bottom-section">
+            <h1>YOUR <br><span>TEXT</span> <br>HERE</h1>
+        </div>
+    </div>
+
+    <!-- Layout 4 -->
+    <div class="brochure layout-4" onclick="showAlert('Layout 4')">
+        <div class="header">
+            <h3>COMPANY NAME</h3>
+            <div class="contact">+62 812 3456 7890</div>
+        </div>
+        <div class="main-content">
+            <h1>BROCHURE <span style="color: var(--orange);">DESIGN</span></h1>
+            <div class="divider"></div>
+            <div class="content-body">
+                <div class="left-col">
+                    <div class="image-placeholder"></div>
+                </div>
+                <div class="right-col">
+                    <h4>Lorem Ipsum</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                </div>
+            </div>
+            <div class="footer-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showAlert(layoutName) {
+            // Efek interaktif sederhana
+            alert('Anda mengklik ' + layoutName + ' - Brosur ini siap untuk dicetak!');
+        }
+    </script>
+
+</body>
+</html>
